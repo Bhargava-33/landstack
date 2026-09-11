@@ -2,7 +2,7 @@ const parcelLayers = {};
 let currentView = "buyer";
 // ================= BACKEND CONNECTION =================
 
-const API_BASE = "http://localhost:3000/api";
+const API_BASE = "/api";
 
 async function getBackendLandRecord(id) {
     try {

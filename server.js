@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -48,7 +48,7 @@ app.get("/api/land/:surveyNo", (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`LANDSTACK running at http://localhost:${PORT}`);
     console.log(`API available at http://localhost:${PORT}/api`);
 });
