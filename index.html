@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Land Stack GIS - Integrated Land Governance Platform</title>
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="header-content">
+
+            <div>
+
+                <h1>Land Stack GIS</h1>
+
+                <p>
+                    Integrated Land Governance Platform
+                </p>
+
+            </div>
+
+            <div class="demo-badge">
+                DEMO / FICTIONAL DATA
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- DEMO NOTICE -->
+    <div class="demo-notice">
+
+        <strong>⚠ Demonstration Prototype:</strong>
+
+        This website uses fictional parcel numbers and example
+        data only to demonstrate the proposed Land Stack concept.
+        It is not official government land information.
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+
+        <!-- HOME DASHBOARD -->
+        <section class="home-dashboard">
+
+            <div class="hero-section">
+
+                <div class="hero-text">
+
+                    <h2>
+                        Integrated Land Information in One Place
+                    </h2>
+
+                    <p>
+                        Select a land parcel and access connected
+                        information from revenue, registration,
+                        planning, taxation, building and GIS systems.
+                    </p>
+
+                    <button
+                        class="start-button"
+                        onclick="startParcelSearch()"
+                    >
+                        🔎 Start Parcel Search
+                    </button>
+
+                </div>
+
+
+                <div class="hero-card">
+
+                    <div class="hero-card-title">
+                        LAND STACK
+                    </div>
+
+                    <div class="hero-card-subtitle">
+                        One Parcel → Multiple Connected Records
+                    </div>
+
+                    <div class="hero-mini-flow">
+
+                        <span>Parcel</span>
+                        <span>→</span>
+                        <span>Records</span>
+                        <span>→</span>
+                        <span>Validation</span>
+                        <span>→</span>
+                        <span>Report</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DASHBOARD STATISTICS -->
+
+            <h2 class="dashboard-heading">
+                Prototype Overview
+            </h2>
+
+            <div class="home-stats">
+
+                <div class="home-stat-card">
+
+                    <div
+                        class="stat-number"
+                        id="totalParcels"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        Demo Parcels
+                    </div>
+
+                </div>
+
+
+                <div class="home-stat-card">
+
+                    <div
+                        class="stat-number"
+                        id="clearParcels"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        Clear to Proceed
+                    </div>
+
+                </div>
+
+
+                <div class="home-stat-card">
+
+                    <div
+                        class="stat-number"
+                        id="verificationParcels"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        Verification Required
+                    </div>
+
+                </div>
+
+
+                <div class="home-stat-card">
+
+                    <div
+                        class="stat-number"
+                        id="attentionParcels"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        High Attention
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WORKFLOW -->
+
+            <div class="workflow-section">
+
+                <h2 class="dashboard-heading">
+                    How the Land Stack Works
+                </h2>
+
+                <div class="workflow-flow">
+
+                    <div class="workflow-card">
+
+                        <div class="workflow-number">
+                            1
+                        </div>
+
+                        <h3>
+                            Select Parcel
+                        </h3>
+
+                        <p>
+                            Select a parcel on the GIS map
+                            or search by survey number.
+                        </p>
+
+                    </div>
+
+
+                    <div class="workflow-arrow">
+                        →
+                    </div>
+
+
+                    <div class="workflow-card">
+
+                        <div class="workflow-number">
+                            2
+                        </div>
+
+                        <h3>
+                            Retrieve Records
+                        </h3>
+
+                        <p>
+                            Connect revenue, registration,
+                            planning, tax and GIS information.
+                        </p>
+
+                    </div>
+
+
+                    <div class="workflow-arrow">
+                        →
+                    </div>
+
+
+                    <div class="workflow-card">
+
+                        <div class="workflow-number">
+                            3
+                        </div>
+
+                        <h3>
+                            Validate
+                        </h3>
+
+                        <p>
+                            Check consistency between
+                            connected datasets.
+                        </p>
+
+                    </div>
+
+
+                    <div class="workflow-arrow">
+                        →
+                    </div>
+
+
+                    <div class="workflow-card">
+
+                        <div class="workflow-number">
+                            4
+                        </div>
+
+                        <h3>
+                            Due Diligence
+                        </h3>
+
+                        <p>
+                            Identify restrictions,
+                            pending records and risks.
+                        </p>
+
+                    </div>
+
+
+                    <div class="workflow-arrow">
+                        →
+                    </div>
+
+
+                    <div class="workflow-card">
+
+                        <div class="workflow-number">
+                            5
+                        </div>
+
+                        <h3>
+                            Land Report
+                        </h3>
+
+                        <p>
+                            Generate an integrated
+                            parcel information report.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- USERS -->
+
+            <div class="user-section">
+
+                <h2 class="dashboard-heading">
+                    Who Can Use the Platform?
+                </h2>
+
+                <div class="user-cards">
+
+                    <div class="user-card">
+
+                        <div class="user-icon">
+                            👤
+                        </div>
+
+                        <h3>
+                            Citizens / Buyers
+                        </h3>
+
+                        <p>
+                            Check important land information
+                            before purchasing a property.
+                        </p>
+
+                    </div>
+
+
+                    <div class="user-card">
+
+                        <div class="user-icon">
+                            🏛
+                        </div>
+
+                        <h3>
+                            Government Officials
+                        </h3>
+
+                        <p>
+                            Access connected departmental
+                            records using a common parcel ID.
+                        </p>
+
+                    </div>
+
+
+                    <div class="user-card">
+
+                        <div class="user-icon">
+                            🏗
+                        </div>
+
+                        <h3>
+                            Engineers / Planners
+                        </h3>
+
+                        <p>
+                            Check planning, GIS, road access
+                            and development-related information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VIEW SELECTOR -->
+
+        <section
+            class="view-selector"
+            id="parcelSearchSection"
+        >
+
+            <button
+                class="view-button active"
+                onclick="setView('buyer')"
+                id="buyerViewButton"
+            >
+                👤 Buyer View
+            </button>
+
+
+            <button
+                class="view-button"
+                onclick="setView('official')"
+                id="officialViewButton"
+            >
+                🏛 Official / Engineer View
+            </button>
+
+        </section>
+
+
+        <!-- MAP SECTION -->
+
+        <section class="map-section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Land Parcel Map
+                </h2>
+
+                <p>
+                    Select a parcel or search using its survey number.
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="surveySearch"
+                    placeholder="Enter Survey Number e.g. A-106/1"
+                >
+
+                <button onclick="searchParcel()">
+                    Search
+                </button>
+
+            </div>
+
+
+            <div id="searchMessage"></div>
+
+
+            <!-- MAP -->
+
+            <div id="map"></div>
+
+
+            <!-- GIS LAYER PANEL -->
+
+            <div class="gis-layer-panel">
+
+                <h3>
+                    🗺 GIS Layers
+                </h3>
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="parcelLayerToggle"
+                        checked
+                        onchange="toggleParcelLayer()"
+                    >
+
+                    Parcel Boundaries
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="landUseLayerToggle"
+                        checked
+                        onchange="toggleLandUseLayer()"
+                    >
+
+                    Land Use
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="roadLayerToggle"
+                        onchange="toggleRoadLayer()"
+                    >
+
+                    Road Access
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="restrictionLayerToggle"
+                        onchange="toggleRestrictionLayer()"
+                    >
+
+                    Restrictions
+
+                </label>
+
+            </div>
+
+
+            <!-- MAP LEGEND -->
+
+            <div class="legend">
+
+                <h3>
+                    Land Use Legend
+                </h3>
+
+                <div class="legend-item">
+
+                    <span class="legend-color agricultural"></span>
+
+                    Agricultural
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="legend-color residential"></span>
+
+                    Residential
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span class="legend-color commercial"></span>
+
+                    Commercial
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- PARCEL INFORMATION -->
+
+        <section class="parcel-section">
+
+            <div
+                id="parcelInfo"
+                class="empty-state"
+            >
+
+                <div class="empty-icon">
+                    🗺
+                </div>
+
+                <h2>
+                    Select a Land Parcel
+                </h2>
+
+                <p>
+                    Click a parcel on the map or search
+                    for a survey number to view integrated
+                    land information.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTEGRATED DATA SOURCES -->
+
+        <section class="integration-section">
+
+            <h2>
+                Integrated Land Data Sources
+            </h2>
+
+            <p>
+                The Land Stack connects multiple departmental
+                datasets using a common parcel / survey identifier.
+            </p>
+
+
+            <div class="integration-flow">
+
+                <div class="integration-source">
+
+                    <div class="integration-source-title">
+                        Revenue / RoR
+                    </div>
+
+                    <div class="integration-source-icon">
+                        📜
+                    </div>
+
+                </div>
+
+
+                <div class="integration-source">
+
+                    <div class="integration-source-title">
+                        Registration
+                    </div>
+
+                    <div class="integration-source-icon">
+                        📝
+                    </div>
+
+                </div>
+
+
+                <div class="integration-source">
+
+                    <div class="integration-source-title">
+                        Planning
+                    </div>
+
+                    <div class="integration-source-icon">
+                        🗺
+                    </div>
+
+                </div>
+
+
+                <div class="integration-source">
+
+                    <div class="integration-source-title">
+                        Property Tax
+                    </div>
+
+                    <div class="integration-source-icon">
+                        💰
+                    </div>
+
+                </div>
+
+
+                <div class="integration-source">
+
+                    <div class="integration-source-title">
+                        Building
+                    </div>
+
+                    <div class="integration-source-icon">
+                        🏢
+                    </div>
+
+                </div>
+
+
+                <div class="integration-source">
+
+                    <div class="integration-source-title">
+                        GIS
+                    </div>
+
+                    <div class="integration-source-icon">
+                        📍
+                    </div>
+
+                </div>
+
+
+                <div class="integration-source">
+
+                    <div class="integration-source-title">
+                        Ownership
+                    </div>
+
+                    <div class="integration-source-icon">
+                        👤
+                    </div>
+
+                </div>
+
+
+                <div class="integration-source">
+
+                    <div class="integration-source-title">
+                        Conversion
+                    </div>
+
+                    <div class="integration-source-icon">
+                        🔄
+                    </div>
+
+                </div>
+
+
+                <div class="integration-arrow">
+                    ↓
+                </div>
+
+
+                <div class="integration-center">
+
+                    <div class="land-stack-core">
+
+                        <strong>
+                            LAND STACK
+                        </strong>
+
+                        <span>
+                            Common Parcel-Based
+                            Information Layer
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="integration-arrow">
+                    ↓
+                </div>
+
+
+                <div class="integrated-result">
+
+                    <h3>
+                        Integrated Parcel Record
+                    </h3>
+
+                    <p>
+                        One Survey Number →
+                        Multiple Connected Datasets
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SYSTEM ARCHITECTURE -->
+
+        <section class="architecture-section">
+
+            <h2>
+                Proposed System Architecture
+            </h2>
+
+            <p>
+                Government datasets are connected through
+                an integration layer and accessed using
+                a common parcel / survey identifier.
+            </p>
+
+
+            <div class="architecture-flow">
+
+
+                <!-- GOVERNMENT DATA SOURCES -->
+
+                <div class="architecture-column">
+
+                    <div class="architecture-title">
+                        Government Data Sources
+                    </div>
+
+
+                    <div class="architecture-card">
+                        Revenue / RoR
+                    </div>
+
+
+                    <div class="architecture-card">
+                        Registration
+                    </div>
+
+
+                    <div class="architecture-card">
+                        Planning
+                    </div>
+
+
+                    <div class="architecture-card">
+                        Property Tax
+                    </div>
+
+
+                    <div class="architecture-card">
+                        Building Permissions
+                    </div>
+
+
+                    <div class="architecture-card">
+                        GIS / Maps
+                    </div>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    →
+                </div>
+
+
+                <!-- INTEGRATION LAYER -->
+
+                <div class="architecture-column">
+
+                    <div class="architecture-title">
+                        Integration Layer
+                    </div>
+
+
+                    <div class="architecture-main-card">
+
+                        <strong>
+                            Data Integration
+                        </strong>
+
+                        <span>
+                            Standard APIs
+                        </span>
+
+                        <span>
+                            Common Parcel ID
+                        </span>
+
+                        <span>
+                            Data Validation
+                        </span>
+
+                        <span>
+                            Interoperability
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    →
+                </div>
+
+
+                <!-- LAND STACK -->
+
+                <div class="architecture-column">
+
+                    <div class="architecture-title">
+                        Land Stack
+                    </div>
+
+
+                    <div class="architecture-main-card">
+
+                        <strong>
+                            Integrated Land Record
+                        </strong>
+
+                        <span>
+                            Parcel Information
+                        </span>
+
+                        <span>
+                            Ownership
+                        </span>
+
+                        <span>
+                            Land Use
+                        </span>
+
+                        <span>
+                            Restrictions
+                        </span>
+
+                        <span>
+                            Due Diligence
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    →
+                </div>
+
+
+                <!-- USERS -->
+
+                <div class="architecture-column">
+
+                    <div class="architecture-title">
+                        Users
+                    </div>
+
+
+                    <div class="architecture-small-card">
+                        👤 Citizens
+                    </div>
+
+
+                    <div class="architecture-small-card">
+                        🏛 Officials
+                    </div>
+
+
+                    <div class="architecture-small-card">
+                        🏗 Engineers
+                    </div>
+
+
+                    <div class="architecture-small-card">
+                        🗺 Planners
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="architecture-note">
+
+                <strong>
+                    Key Principle:
+                </strong>
+
+                All connected datasets use a common
+                parcel / survey identifier to create
+                an interoperable land information system.
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Land Stack GIS Prototype |
+            SIH Demonstration Project
+        </p>
+
+        <p>
+            ⚠ All parcel numbers, ownership statuses,
+            tax records and other information shown
+            are fictional examples.
+        </p>
+
+    </footer>
+
+
+    <!-- LEAFLET JS -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+
+    <!-- DEMO DATA -->
+
+    <script src="data.js"></script>
+
+
+    <!-- MAIN JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
