@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Load mock land database
-const dataPath = path.join(__dirname, "data", "landRecords.json");
+const dataPath = path.join(__dirname, "landRecords.json");
 const landRecords = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 
 // Serve frontend files
